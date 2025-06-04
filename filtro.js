@@ -8,9 +8,22 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsByName("lista-de-productos")
-const $i = document.querySelector('.input');
 
+/*
+ Cambio el metodo de la funcion 
+const li = document.getElementsByNames("lista-de-productos")
+Por
+const li = document.getElementById("lista-de-productos")
+
+*/
+const li = document.getElementById("lista-de-productos")
+const $i = document.querySelector('.input'); // Selecciona el primero que encuentre
+
+
+console.log($i);
+
+// Declaro la arrowFuncion de displayProductos y lo envuelvo con el ciclo for
+const displayProductos =(productos)=>{
 for (let i = 0; i < productos.length; i++) {
   var d = document.createElement("div")
   d.classList.add("producto")
@@ -26,12 +39,26 @@ for (let i = 0; i < productos.length; i++) {
   d.appendChild(imagen)
 
   li.appendChild(d)
+
+
+/* 
+  Coloco un console.log para saber que elementos con las iteraciones
+  del ciclo for
+
+*/
+  console.log(d,li)
+}
 }
 
 displayProductos(productos)
-const botonDeFiltro = document.querySelector("button");
+const botonDeFiltro = document.getElementById("botonDeFiltro");
 
-botonDeFiltro.onclick = function() {
+/*
+ Reemplazo el evento onclick por un addEventListener
+ Reemplazo la funcion por una arrowFunction
+*/
+
+botonDeFiltro.addEventListener("click", ()=> {
   while (li.firstChild) {
     li.removeChild(li.firstChild);
   }
@@ -55,8 +82,8 @@ botonDeFiltro.onclick = function() {
     d.appendChild(imagen)
   
     li.appendChild(d)
-  }
 }
+});
 
 const filtrado = (productos = [], texto) => {
   return productos.filter(item => item.tipo.includes(texto) || item.color.includes(texto));
