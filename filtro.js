@@ -16,37 +16,43 @@ Por
 const li = document.getElementById("lista-de-productos")
 
 */
-const li = document.getElementById("lista-de-productos")
-const $i = document.querySelector('.input'); // Selecciona el primero que encuentre
+
+// Se cambia el nombre li a un nombre descriptivo
+const lista = document.getElementById("lista-de-productos")
+// Se cambia el nombre $i a un nombre descriptivo
+const colorTipo = document.querySelector('.input'); // Selecciona el primero que encuentre
 
 
-console.log($i);
+console.log (colorTipo);
 
 // Declaro la arrowFuncion de displayProductos y lo envuelvo con el ciclo for
 const displayProductos =(productos)=>{
 for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+  // Cambio el tipo de variable var por const
+  // Se cambia el nombre d a un nombre descriptivo
+const divContenido = document.createElement("div")
+  divContenido.classList.add("producto")
 
-  var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
+  // Se cambia el nombre ti a un nombre descriptivo
+const titulo = document.createElement("p")
+  titulo.classList.add("titulo")
+  titulo.textContent = productos[i].nombre
   
-  var imagen = document.createElement("img");
+const imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+  divContenido.appendChild(titulo)
+  divContenido.appendChild(imagen)
 
-  li.appendChild(d)
+  lista.appendChild(divContenido)
 
 
 /* 
-  Coloco un console.log para saber que elementos con las iteraciones
+  Coloco un console.log para saber que elementos tengo con las iteraciones
   del ciclo for
 
 */
-  console.log(d,li)
+  console.log(divContenido,lista)
 }
 }
 
@@ -59,29 +65,30 @@ const botonDeFiltro = document.getElementById("botonDeFiltro");
 */
 
 botonDeFiltro.addEventListener("click", ()=> {
-  while (li.firstChild) {
-    li.removeChild(li.firstChild);
+  //Cambio el tipo de variable var por const
+  while (lista.firstChild) {
+    lista.removeChild(lista.firstChild);
   }
 
-  const texto = $i.value;
+  const texto = colorTipo.value;
   console.log(texto);
   const productosFiltrados = filtrado(productos, texto );
 
   for (let i = 0; i < productosFiltrados.length; i++) {
-    var d = document.createElement("div")
-    d.classList.add("producto")
+  const divContenido = document.createElement("div")
+    divContenido.classList.add("producto")
   
-    var ti = document.createElement("p")
-    ti.classList.add("titulo")
-    ti.textContent = productosFiltrados[i].nombre
+  const titulo = document.createElement("p")
+    titulo.classList.add("titulo")
+    titulo.textContent = productosFiltrados[i].nombre
     
-    var imagen = document.createElement("img");
+  const imagen = document.createElement("img");
     imagen.setAttribute('src', productosFiltrados[i].img);
   
-    d.appendChild(ti)
-    d.appendChild(imagen)
+    divContenido.appendChild(titulo)
+    divContenido.appendChild(imagen)
   
-    li.appendChild(d)
+    lista.appendChild(divContenido)
 }
 });
 
